@@ -73,12 +73,18 @@ $(document).ready(() => {
                     $(index).find("[data-uniqlo-price]")[0].attributes[0].value !==
                     "false"
                 ) {
-                    const price = $(data)[0].childNodes[1].childNodes[5].childNodes[3]
-                        .childNodes[3].innerText;
-                    $(index).find("[data-uniqlo-price]")[0].innerHTML = price;
-                    $(index).find("[data-uniqlo-price]").map((value, index) => {
-                        index.innerHTML = price;
-                    })
+                    if (urlPrefix === 'https://www.uniqlo.com') {
+                        const price = $(data)[0].childNodes[1].childNodes[5].childNodes[3].childNodes[1].innerText;
+                        $(index).find("[data-uniqlo-price]").map((value, index) => {
+                            index.innerHTML = price;
+                        })
+                    } else {
+                        const price = $(data)[0].childNodes[1].childNodes[5].childNodes[3].childNodes[3].innerText;
+                        $(index).find("[data-uniqlo-price]").map((value, index) => {
+                            index.innerHTML = price;
+                        })
+                    }
+
                 } else if (
                     $(index).find("[data-uniqlo-price]")[0].attributes[0].value ===
                     "false"
