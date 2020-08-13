@@ -109,11 +109,11 @@ $(document).ready(() => {
             if ($(index).find("[data-uniqlo-saleprice]").length !== 0) {
                 if ($(index).find("[data-uniqlo-saleprice]")[0].attributes[0].value !== "false") {
                     const salePrice = $(data)[0].childNodes[1].childNodes[5].childNodes[3].childNodes[3].innerText;
-                    $(index).find("[data-uniqlo-saleprice").map((value, index) => {
+                    $(index).find("[data-uniqlo-saleprice]").map((value, index) => {
                         index.innerHTML = salePrice;
                     })
                 }
-            } else if ($(index).find("[data-uniqlo-saleprice")[0].attributes[0].value === "false") {
+            } else if ($(index).find("[data-uniqlo-saleprice]")[0].attributes[0].value === "false") {
                 const salePrice = products[region][sku]["saleprice"];
                 $(index).find("[data-uniqlo-saleprice]").map((value, index) => {
                     index.innerHTML = salePrice
