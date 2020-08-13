@@ -1,4 +1,4 @@
-$(document).ready(() => {
+
 
 
 
@@ -219,4 +219,4 @@ $(document).ready(() => {
     }
 
 
-});
+
