@@ -1,5 +1,7 @@
 $(document).ready(() => {
 
+
+
     let urlPrefix = "https://www.uniqlo.com";
     if (window.location.href.includes("prodtest")) {
         urlPrefix = "https://prodtest.uniqlo.com";
@@ -32,11 +34,11 @@ $(document).ready(() => {
             fetchURL(data, sku);
             fetchImage(data, sku);
             fetchPrice(data, sku);
+            fetchSalePrice(data, sku);
             fetchSwatches(data, sku);
             fetchRatings(sku);
         });
     });
-
 
     fetchName = (data, sku) => {
         $(`[data-uniqlo-id='${sku}']`).map((val, index) => {
@@ -100,6 +102,31 @@ $(document).ready(() => {
             }
         });
     };
+
+
+    fetchSalePrice = (data, sku) => {
+        $(`[data-uniqlo-id = '${sku}']`).map((val, index) => {
+            if ($(index).find("[data-uniqlo-saleprice]").length !== 0) {
+                if ($(index).find("[data-uniqlo-saleprice]")[0].attributes[0].value !== "false") {
+                    const salePrice = $(data)[0].childNodes[1].childNodes[5].childNodes[3].childNodes[3].innerText;
+                    $(index).find("[data-uniqlo-saleprice").map((value, index) => {
+                        index.innerHTML = salePrice;
+                    })
+                }
+            } else if ($(index).find("[data-uniqlo-saleprice")[0].attributes[0].value === "false") {
+                const salePrice = products[region][sku]["saleprice"];
+                $(index).find("[data-uniqlo-saleprice]").map((value, index) => {
+                    index.innerHTML = salePrice
+                })
+            } else {
+                return null
+            }
+
+
+        })
+    }
+
+
     fetchURL = (data, sku) => {
         $(`[data-uniqlo-id='${sku}']`).map((val, index) => {
             if ($(index).find("[data-uniqlo-url]").length !== 0) {
@@ -182,13 +209,14 @@ $(document).ready(() => {
                         const ratings = parseInt($(index)[0].dataset.uniqloRatings); //get number of stars;
                         const ratingsElement = $(index)[0];
                         const star = "★";
-                        for (let i = 1; i < ratings; i++) {
+                        for (let i = 0; i < ratings; i++) {
                             ratingsElement.append(star);
                         }
                     })
                 }
             }
         })
-        // console.log('hello')
     }
+
+
 });
