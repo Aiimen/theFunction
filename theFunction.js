@@ -1,7 +1,3 @@
-$(document).ready(() => {
-
-
-
     let urlPrefix = "https://www.uniqlo.com";
     if (window.location.href.includes("prodtest")) {
         urlPrefix = "https://prodtest.uniqlo.com";
@@ -218,5 +214,3 @@ $(document).ready(() => {
         })
     }
 
-
-});
