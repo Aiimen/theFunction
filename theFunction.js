@@ -112,12 +112,12 @@ $(document).ready(() => {
                     $(index).find("[data-uniqlo-saleprice").map((value, index) => {
                         index.innerHTML = salePrice;
                     })
+                } else if ($(index).find("[data-uniqlo-saleprice")[0].attributes[0].value === "false") {
+                    const salePrice = products[region][sku]["saleprice"];
+                    $(index).find("[data-uniqlo-saleprice]").map((value, index) => {
+                        index.innerHTML = salePrice
+                    })
                 }
-            } else if ($(index).find("[data-uniqlo-saleprice")[0].attributes[0].value === "false") {
-                const salePrice = products[region][sku]["saleprice"];
-                $(index).find("[data-uniqlo-saleprice]").map((value, index) => {
-                    index.innerHTML = salePrice
-                })
             } else {
                 return null
             }
