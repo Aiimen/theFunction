@@ -1,3 +1,7 @@
+$(document).ready(() => {
+
+
+
     let urlPrefix = "https://www.uniqlo.com";
     if (window.location.href.includes("prodtest")) {
         urlPrefix = "https://prodtest.uniqlo.com";
@@ -108,20 +112,12 @@
                     $(index).find("[data-uniqlo-saleprice]").map((value, index) => {
                         index.innerHTML = salePrice;
                     })
-                } else if ($(index).find("[data-uniqlo-saleprice")[0].attributes[0].value === "false") {
+                } else if ($(index).find("[data-uniqlo-saleprice]")[0].attributes[0].value === "false") {
                     const salePrice = products[region][sku]["saleprice"];
                     $(index).find("[data-uniqlo-saleprice]").map((value, index) => {
                         index.innerHTML = salePrice
                     })
                 }
-<<<<<<< HEAD
-=======
-            } else if ($(index).find("[data-uniqlo-saleprice]")[0].attributes[0].value === "false") {
-                const salePrice = products[region][sku]["saleprice"];
-                $(index).find("[data-uniqlo-saleprice]").map((value, index) => {
-                    index.innerHTML = salePrice
-                })
->>>>>>> 5528fa4a61c10097cbdec93741fda7c2d03c7a03
             } else {
                 return null
             }
@@ -222,3 +218,5 @@
         })
     }
 
+
+});
